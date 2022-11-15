@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keypad</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+body {
+    background-color: black;
+                   background-image: url(bg.jpg) ;
+                   background-size: cover;
+                   color: rgb(63, 11, 63);
+               }
+               h1 {
+               text-align: center;
+               }
+               p {
+                   margin-top: 10px;
+                   font-size: 20px;
+                   font-family: 'Times New Roman', Times, serif;
+                   font-weight: bold ;
+                   color: thistle;
+               }
+               a {
+                   background-color: blueviolet;
+                   border-style: solid;
+                   color: wheat;
+                   text-decoration: none;
+                   padding: 10px;
+                   margin: 10px;
+                   border-color: rgb(28, 211, 235);
+                   border-width: 10px;
+                   border-radius: 10%;
+               }
+               a:hover {
+                   background-color: rgb(19, 156, 219);
+               }
+.title {
+  width: 80%;
+  height: 10vh;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid #000;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .title {
+    width: 100%;
+  }
+}
+#text {
+  width: 80%;
+  height: 65.5vh;
+  padding: 20px;
+  margin: 2vh 0 0 50%;
+  transform: translatex(-50%);
+  resize: none;
+  overflow-y: auto;
+  font-size: 16px;
+  cursor: auto;
+}
+@media (max-width: 600px) {
+  #text {
+    width: 100%;
+  }
+}
+.keyboard {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: 332px;
+  height: 124px;
+  padding-left: 4px;
+  background-color: rgb(26, 84, 122);
+  border: 1px solid #000;
+  border-radius: 6px;
+}
+#key {
+  display: none;
+}
+#maths {
+  display: none;
+}
+.row1 {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-top: 4px;
+  background-color: rgb(187, 145, 221);
+  border: 1px solid #000;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: 0 0 3px #000;
+  cursor: pointer;
+}
+.row1:active {
+  box-shadow: 0 0 1px #000;
+}
+#symbol-change,
+#letter-change {
+  position: absolute;
+  bottom: 8px;
+  left: 42px;
+  width: 56px;
+  height: 24px;
+  margin-top: -2px;
+  padding-bottom: 0px;
+  background-color: rgb(160, 102, 102);
+  border: 1px solid #000;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: 0 0 3px #000;
+  cursor: pointer;
+}
+#letter-change {
+  margin-top: -4px;
+}
+#symbol-change:active,
+#letter-change:active {
+  box-shadow: 0 0 1px #000;
+}
+#math-change,
+#lett-change {
+  position: absolute;
+  bottom: 8px;
+  left: 230px;
+  width: 54px;
+  height: 24px;
+  margin-top: -2px;
+  padding-bottom: 0px;
+  background-color:rgb(160, 102, 102);
+  border: 1px solid #000;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: 0 0 3px #000;
+  cursor: pointer;
+}
+#lett-change {
+  bottom: 10px;
+  left: 214px;
+  margin-top: 0px;
+}
+#math-change:active,
+#lett-change:active {
+  box-shadow: 0 0 1px #000;
+}
+
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>Keypad</h1>
+      </div>
+      <textarea id="text"></textarea>
+      <div class="keyboard">
+        <div class="row1" id="0" onclick="letter_click(this.id)">q</div>
+        <div class="row1" id="1" onclick="letter_click(this.id)">w</div>
+        <div class="row1" id="2" onclick="letter_click(this.id)">e</div>
+        <div class="row1" id="3" onclick="letter_click(this.id)">r</div>
+        <div class="row1" id="4" onclick="letter_click(this.id)">t</div>
+        <div class="row1" id="5" onclick="letter_click(this.id)">y</div>
+        <div class="row1" id="6" onclick="letter_click(this.id)">u</div>
+        <div class="row1" id="7" onclick="letter_click(this.id)">i</div>
+        <div class="row1" id="8" onclick="letter_click(this.id)">o</div>
+        <div class="row1" id="9" onclick="letter_click(this.id)">p</div>
+        <div class="row1" id="10" onclick="popArray()">&larr;</div><br>
+        <div class="row1" id="11" onclick="letter_click(this.id)" style="margin-left:14px;">a</div>
+        <div class="row1" id="12" onclick="letter_click(this.id)">s</div>
+        <div class="row1" id="13" onclick="letter_click(this.id)">d</div>
+        <div class="row1" id="14" onclick="letter_click(this.id)">f</div>
+        <div class="row1" id="15" onclick="letter_click(this.id)">g</div>
+        <div class="row1" id="16" onclick="letter_click(this.id)">h</div>
+        <div class="row1" id="17" onclick="letter_click(this.id)">j</div>
+        <div class="row1" id="18" onclick="letter_click(this.id)">k</div>
+        <div class="row1" id="19" onclick="letter_click(this.id)">l</div>
+        <div class="row1" id="20" onclick="download()" style="width:40px;">save</div><br>
+        <div class="row1" id="21" onclick="letter_click(this.id)" style="margin-left:28px;">z</div>
+        <div class="row1" id="22" onclick="letter_click(this.id)">x</div>
+        <div class="row1" id="23" onclick="letter_click(this.id)">c</div>
+        <div class="row1" id="24" onclick="letter_click(this.id)">v</div>
+        <div class="row1" id="25" onclick="letter_click(this.id)">b</div>
+        <div class="row1" id="26" onclick="letter_click(this.id)">n</div>
+        <div class="row1" id="27" onclick="letter_click(this.id)">m</div>
+        <div class="row1" id="28" onclick="capitol_click()" style="width:64px;">shift</div><br>
+        <div class="row1" id="29" onclick="letter_click(this.id)" style="width:118px;margin-left: 103px">space</div>
+        <div id="symbol-change" onclick="setSymbols()" style="width:60px">symbol</div>
+        <div id="math-change" onclick="setMaths()">maths</div>
+      </div>
+      <div class="keyboard" id="key">
+        <div class="row1" id="30" onclick="letter_click(this.id)">!</div>
+        <div class="row1" id="31" onclick="letter_click(this.id)">&quot;</div>
+        <div class="row1" id="32" onclick="letter_click(this.id)">&pound;</div>
+        <div class="row1" id="33" onclick="letter_click(this.id)">$</div>
+        <div class="row1" id="34" onclick="letter_click(this.id)">%</div>
+        <div class="row1" id="35" onclick="letter_click(this.id)">^</div>
+        <div class="row1" id="36" onclick="letter_click(this.id)">&amp;</div>
+        <div class="row1" id="37" onclick="letter_click(this.id)">*</div>
+        <div class="row1" id="38" onclick="letter_click(this.id)">(</div>
+        <div class="row1" id="39" onclick="letter_click(this.id)">)</div>
+        <div class="row1" id="40" onclick="letter_click(this.id)">_</div><br>
+        <div class="row1" id="41" onclick="letter_click(this.id)" style="margin-left:14px;">-</div>
+        <div class="row1" id="42" onclick="letter_click(this.id)">+</div>
+        <div class="row1" id="43" onclick="letter_click(this.id)">=</div>
+        <div class="row1" id="44" onclick="letter_click(this.id)">{</div>
+        <div class="row1" id="45" onclick="letter_click(this.id)">}</div>
+        <div class="row1" id="46" onclick="letter_click(this.id)">[</div>
+        <div class="row1" id="47" onclick="letter_click(this.id)">]</div>
+        <div class="row1" id="48" onclick="letter_click(this.id)">:</div>
+        <div class="row1" id="49" onclick="letter_click(this.id)">;</div>
+        <div class="row1" id="50" onclick="letter_click(this.id)">'</div><br>
+        <div class="row1" id="51" onclick="letter_click(this.id)" style="margin-left:28px;">@</div>
+        <div class="row1" id="52" onclick="letter_click(this.id)">~</div>
+        <div class="row1" id="53" onclick="letter_click(this.id)">#</div>
+        <div class="row1" id="54" onclick="letter_click(this.id)">|</div>
+        <div class="row1" id="55" onclick="letter_click(this.id)">\</div>
+        <div class="row1" id="56" onclick="letter_click(this.id)">/</div>
+        <div class="row1" id="57" onclick="letter_click(this.id)">?</div>
+        <div class="row1" id="58" onclick="letter_click(this.id)">&lt;</div>
+        <div class="row1" id="59" onclick="letter_click(this.id)">&gt;</div>
+        <div id="letter-change" onclick="resetLetters()">letters</div>
+        <div class="row1" id="60" onclick="letter_click(this.id)" style="width:162px;margin-left: 98px">space</div>
+        <div class="row1" id="61" onclick="letter_click(this.id)">,</div>
+        <div class="row1" id="62" onclick="letter_click(this.id)">.</div>
+      </div>
+      <div class="keyboard" id="maths">
+        <div class="row1" id="63" onclick="letter_click(this.id)" style="margin-left:24px;">1</div>
+        <div class="row1" id="64" onclick="letter_click(this.id)">2</div>
+        <div class="row1" id="65" onclick="letter_click(this.id)">3</div>
+        <div class="row1" id="66" onclick="letter_click(this.id)">4</div>
+        <div class="row1" id="67" onclick="letter_click(this.id)">5</div>
+        <div class="row1" id="68" onclick="letter_click(this.id)">6</div>
+        <div class="row1" id="69" onclick="letter_click(this.id)">7</div>
+        <div class="row1" id="70" onclick="letter_click(this.id)">8</div>
+        <div class="row1" id="71" onclick="letter_click(this.id)">9</div>
+        <div class="row1" id="72" onclick="letter_click(this.id)">0</div><br>
+        <div class="row1" id="73" onclick="letter_click(this.id)" style="margin-left: 38px;">√</div>
+        <div class="row1" id="74" onclick="letter_click(this.id)">%</div>
+        <div class="row1" id="75" onclick="letter_click(this.id)">(</div>
+        <div class="row1" id="76" onclick="letter_click(this.id)">)</div>
+        <div class="row1" id="77" onclick="letter_click(this.id)">∞</div>
+        <div class="row1" id="78" onclick="letter_click(this.id)">°</div>
+        <div class="row1" id="79" onclick="letter_click(this.id)">¼</div>
+        <div class="row1" id="80" onclick="letter_click(this.id)">½</div>
+        <div class="row1" id="81" onclick="letter_click(this.id)">¾</div>
+        <div class="row1" id="82" onclick="letter_click(this.id)" style="margin-left: 53px;">+</div>
+        <div class="row1" id="83" onclick="letter_click(this.id)">−</div>
+        <div class="row1" id="84" onclick="letter_click(this.id)">×</div>
+        <div class="row1" id="85" onclick="letter_click(this.id)">÷</div>
+        <div class="row1" id="86" onclick="letter_click(this.id)">=</div>
+        <div class="row1" id="87" onclick="letter_click(this.id)">∑</div>
+        <div class="row1" id="88" onclick="letter_click(this.id)">?</div>
+        <div class="row1" id="89" onclick="letter_click(this.id)">_</div>
+        <div class="row1" id="90" onclick="letter_click(this.id)" style="width:114px;margin-left: 92px">space</div>
+        <div id="lett-change" onclick="resetLett()">letters</div>
+      </div> 
+      <a class="v" href="./index.html">Vissza</a>
+</body>
+</html>
